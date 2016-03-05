@@ -5,7 +5,8 @@
  */
 package servlets;
 
-import ejb.ItemManagementBean;
+import ejb.ItemManagementEJB;
+import ejbimpl.ItemManagementBean;
 import entity.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UpdateStocksServlet extends HttpServlet {
 
     @EJB
-    ItemManagementBean itemManagementBean;
+    ItemManagementEJB itemManagementBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

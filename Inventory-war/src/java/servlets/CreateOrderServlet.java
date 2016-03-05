@@ -5,10 +5,14 @@
  */
 package servlets;
 
-import ejb.CategoryManagementBean;
-import ejb.OrderProcessorBean;
-import ejb.ItemManagementBean;
-import ejb.SupplierManagementBean;
+import ejb.CategoryManagementEJB;
+import ejb.ItemManagementEJB;
+import ejb.OrderProcessorEJB;
+import ejb.SupplierManagementEJB;
+import ejbimpl.CategoryManagementBean;
+import ejbimpl.OrderProcessorBean;
+import ejbimpl.ItemManagementBean;
+import ejbimpl.SupplierManagementBean;
 import entity.Category;
 import entity.Item;
 import entity.Supplier;
@@ -32,16 +36,16 @@ import javax.servlet.http.HttpServletResponse;
 public class CreateOrderServlet extends HttpServlet {
 
     @EJB
-    OrderProcessorBean createOrderBean;
+    OrderProcessorEJB createOrderBean;
 
     @EJB
-    ItemManagementBean itemManagementBean;
+    ItemManagementEJB itemManagementBean;
 
     @EJB
-    CategoryManagementBean categoryManagementBean;
+    CategoryManagementEJB categoryManagementBean;
 
     @EJB
-    SupplierManagementBean supplierManagementBean;
+    SupplierManagementEJB supplierManagementBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

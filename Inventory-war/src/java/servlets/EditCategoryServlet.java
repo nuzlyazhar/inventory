@@ -5,7 +5,8 @@
  */
 package servlets;
 
-import ejb.CategoryManagementBean;
+import ejb.CategoryManagementEJB;
+import ejbimpl.CategoryManagementBean;
 import entity.Category;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +28,7 @@ import utils.Constants;
 public class EditCategoryServlet extends HttpServlet {
 
     @EJB
-    CategoryManagementBean categoryManagementBean;
+    CategoryManagementEJB categoryManagementBean;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

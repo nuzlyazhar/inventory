@@ -5,7 +5,8 @@
  */
 package servlets;
 
-import ejb.CustomerManagementBean;
+import ejb.CustomerManagementEJB;
+import ejbimpl.CustomerManagementBean;
 import entity.Customer;
 import entity.User;
 import java.io.IOException;
@@ -27,7 +28,7 @@ import javax.servlet.http.HttpSession;
 public class CreateCustomerServlet extends HttpServlet {
 
     @EJB
-    CustomerManagementBean customerManagementBean;
+    CustomerManagementEJB customerManagementBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

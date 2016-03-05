@@ -5,10 +5,14 @@
  */
 package servlets;
 
-import ejb.CategoryManagementBean;
-import ejb.OrderProcessorBean;
-import ejb.ItemManagementBean;
-import ejb.SupplierManagementBean;
+import ejb.CategoryManagementEJB;
+import ejb.ItemManagementEJB;
+import ejb.OrderProcessorEJB;
+import ejb.SupplierManagementEJB;
+import ejbimpl.CategoryManagementBean;
+import ejbimpl.OrderProcessorBean;
+import ejbimpl.ItemManagementBean;
+import ejbimpl.SupplierManagementBean;
 import entity.Item;
 import entity.Order;
 import entity.OrderDetail;
@@ -27,6 +31,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import utils.InventoryUtils;
 
 /**
  *
@@ -36,16 +41,16 @@ import javax.servlet.http.HttpSession;
 public class ConsumeOrderServlet extends HttpServlet {
 
     @EJB
-    OrderProcessorBean createOrderBean;
+    OrderProcessorEJB createOrderBean;
 
     @EJB
-    ItemManagementBean itemManagementBean;
+    ItemManagementEJB itemManagementBean;
 
     @EJB
-    CategoryManagementBean categoryManagementBean;
+    CategoryManagementEJB categoryManagementBean;
 
     @EJB
-    SupplierManagementBean supplierManagementBean;
+    SupplierManagementEJB supplierManagementBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -104,7 +109,7 @@ public class ConsumeOrderServlet extends HttpServlet {
             od.setTotal(od.getUnitPrice().multiply(new BigDecimal(noOfUnits)));
             existingOrder.getOrderDetailCollection().add(od);
             }
-            existingOrder.setTotal(calculateOrderTotal(existingOrder));
+            existingOrder.setTotal(InventoryUtils.calculateOrderTotal(existingOrder));
             session.setAttribute("sessionOrder", existingOrder);
             RequestDispatcher rd = request.getRequestDispatcher("order_overview.jsp");
             rd.include(request, response);
@@ -126,12 +131,6 @@ public class ConsumeOrderServlet extends HttpServlet {
         return isCOnsolidated;
     }
     
-    private static BigDecimal calculateOrderTotal(Order order) {
-        BigDecimal total = new BigDecimal("0.00");
-        for (OrderDetail od : order.getOrderDetailCollection()) {
-            total = total.add(od.getTotal());
-        }
-        return total;
-    }
+  
 
 }

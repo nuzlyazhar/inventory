@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejb;
+package ejbimpl;
 
+import ejb.ItemManagementEJB;
 import entity.Item;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,12 @@ import utils.InventoryUtils;
  * @author nuzly
  */
 @Stateless
-public class ItemManagementBean {
+public class ItemManagementBean implements ItemManagementEJB {
 
     @PersistenceContext
     EntityManager em;
 
+    @Override
     public Item createItem(Item item) {
         Item i = em.merge(item);
         em.flush();;
@@ -36,24 +38,28 @@ public class ItemManagementBean {
 
     }
 
+    @Override
     public List<Item> findAllItems() {
         List<Item> itemsList = em.createNamedQuery("Item.findAll", Item.class).getResultList();
         return itemsList;
 
     }
 
+    @Override
     public Item getItemById(String id) {
         Item item = em.createNamedQuery("Item.findById", Item.class).setParameter("id", Integer.parseInt(id)).getSingleResult();
         return item;
 
     }
     
+    @Override
     public List<Item> findAllItemsBelowReorderThreshold() {
         List<Item> itemsList = em.createNamedQuery("Item.findBelowReorderThreshold", Item.class).getResultList();
         return itemsList;
 
     }
 
+    @Override
     public List<Item> searchItems(Item item) {
 
         TypedQuery<Item> query = em.createQuery("SELECT i FROM Item i WHERE UPPER(i.itemName) LIKE :keyword ORDER BY i.itemName", Item.class);
@@ -63,6 +69,7 @@ public class ItemManagementBean {
 
     }
 
+    @Override
     public Item searchItemByName(String itemName) {
 
         TypedQuery<Item> query = em.createNamedQuery("Item.findByItemName", Item.class);
@@ -72,6 +79,7 @@ public class ItemManagementBean {
 
     }
 
+    @Override
     public List<Item> searchItem(Map<String, String> queryParameters) {
         
         CriteriaBuilder cb = em.getCriteriaBuilder();

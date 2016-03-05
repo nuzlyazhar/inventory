@@ -85,65 +85,65 @@
                                                     <td>
                                                         <a value="${order}" type="button" data-trigger="hover" data-toggle="modal" data-target="#myModal${order.id}"><c:out value="${order.id}" /></a>
                                                         <!-- Modal -->
-<div id="myModal${order.id}" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+                                                        <div id="myModal${order.id}" class="modal fade" role="dialog">
+                                                            <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">${order.id} Odrer Detail</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-        
-        <table class="table table-striped table-advance table-hover">
-                                        
-                                        <hr>
-                                        <thead>
-                                            <tr>
-                                                <th><i class="fa fa-bullhorn"></i>Item Name</th>
-                                                <th><i class="fa fa-bookmark"></i> Item Description</th>
-                                                <th><i class="fa fa-bookmark"></i> Unit Price</th>
-                                                <th><i class="fa fa-bookmark"></i> Quantity per Unit</th>
-                                                <th><i class="fa fa-bookmark"></i> Units in Stock</th>
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">${order.id} Odrer Detail</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Some text in the modal.</p>
 
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <form action="EditCategoryServlet" method="get" > 
-                                            <input type="hidden" value="EDIT" name="fromList">
-                                            <c:forEach var="pitem" items="${order.orderDetailCollection}">
-                                                <tr>
-                                                    <td><a href="basic_table.html#"><c:out value="${pitem.itemId.itemName}" /></a></td>
-                                                    <td class="hidden-phone"><c:out value="${pitem.itemId.itemDescription}" /></td>
-                                                    <td class="hidden-phone"><c:out value="${pitem.itemId.unitPrice}" /></td>
-                                                    <td class="hidden-phone"><c:out value="${pitem.itemId.quanityPerUnit}" /></td>
-                                                    <td class="hidden-phone"><c:out value="${pitem.itemId.unitsInStock}" /></td>
-                                                   
+                                                                        <table class="table table-striped table-advance table-hover">
 
-                                                
-                                                </tr>
-                                            </c:forEach>
-                                        </form>
-                                        </tbody>
-                                    </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+                                                                            <hr>
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th><i class="fa fa-bullhorn"></i>Item Name</th>
+                                                                                    <th><i class="fa fa-bookmark"></i> Item Description</th>
+                                                                                    <th><i class="fa fa-bookmark"></i> Unit Price</th>
+                                                                                    <th><i class="fa fa-bookmark"></i> Quantity per Unit</th>
+                                                                                    <th><i class="fa fa-bookmark"></i> Units in Stock</th>
 
-  </div>
-</div>
+                                                                                    <th></th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <form action="EditCategoryServlet" method="get" > 
+                                                                                <input type="hidden" value="EDIT" name="fromList">
+                                                                                <c:forEach var="pitem" items="${order.orderDetailCollection}">
+                                                                                    <tr>
+                                                                                        <td><a href="basic_table.html#"><c:out value="${pitem.itemId.itemName}" /></a></td>
+                                                                                        <td class="hidden-phone"><c:out value="${pitem.itemId.itemDescription}" /></td>
+                                                                                        <td class="hidden-phone"><c:out value="${pitem.itemId.unitPrice}" /></td>
+                                                                                        <td class="hidden-phone"><c:out value="${pitem.itemId.quanityPerUnit}" /></td>
+                                                                                        <td class="hidden-phone"><c:out value="${pitem.itemId.unitsInStock}" /></td>
+
+
+
+                                                                                    </tr>
+                                                                                </c:forEach>
+                                                                            </form>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
                                                     </td>
-                                                    
-                                                    
+
+
                                                     <td class="hidden-phone"><c:out value="${order.customerId.firstName}" /></td>
                                                     <td class="hidden-phone"><c:out value="${order.staffId.username}" /></td>
                                                     <td class="hidden-phone"><c:out value="${order.orderDate}" /></td>
-                                                    <td class="hidden-phone"><c:out value="${order.orderDate}" /></td>
+                                                    <td class="hidden-phone"><c:out value="${order.total}" /></td>
 
 
 
@@ -155,7 +155,7 @@
                                 </div><!-- /content-panel -->
                             </div><!-- /col-md-12 -->
                         </div><!-- /row -->
-                            	
+
                 </section><! --/wrapper -->
             </section><!-- /MAIN CONTENT -->
 

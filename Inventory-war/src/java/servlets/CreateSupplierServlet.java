@@ -5,7 +5,8 @@
  */
 package servlets;
 
-import ejb.SupplierManagementBean;
+import ejb.SupplierManagementEJB;
+import ejbimpl.SupplierManagementBean;
 import entity.Category;
 import entity.Supplier;
 import java.io.IOException;
@@ -27,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CreateSupplierServlet extends HttpServlet {
 
     @EJB
-    SupplierManagementBean supplierManagementBean;
+    SupplierManagementEJB supplierManagementBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

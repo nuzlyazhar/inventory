@@ -5,9 +5,12 @@
  */
 package servlets;
 
-import ejb.CustomerManagementBean;
-import ejb.ItemManagementBean;
-import ejb.UserManagementBean;
+import ejb.CustomerManagementEJB;
+import ejb.ItemManagementEJB;
+import ejb.UserManagementEJB;
+import ejbimpl.CustomerManagementBean;
+import ejbimpl.ItemManagementBean;
+import ejbimpl.UserManagementBean;
 import entity.Customer;
 import entity.Item;
 import entity.User;
@@ -31,13 +34,13 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
 
     @EJB
-    UserManagementBean userManagementBean;
+    UserManagementEJB userManagementBean;
     
     @EJB
-    CustomerManagementBean customerManagementBean;
+    CustomerManagementEJB customerManagementBean;
     
     @EJB
-    ItemManagementBean itemManagementBean;
+    ItemManagementEJB itemManagementBean;
   
 
     

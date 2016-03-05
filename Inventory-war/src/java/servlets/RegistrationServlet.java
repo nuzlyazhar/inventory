@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import ejb.UserManagementBean;
+import ejb.UserManagementEJB;
 import entity.User;
 import java.io.IOException;
 import javax.ejb.EJB;
@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistrationServlet extends HttpServlet {
     
     @EJB
-    UserManagementBean userManagementBean;
+    UserManagementEJB userManagementBean;
    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

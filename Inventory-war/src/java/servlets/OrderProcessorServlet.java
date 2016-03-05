@@ -5,8 +5,10 @@
  */
 package servlets;
 
-import ejb.CustomerManagementBean;
-import ejb.OrderProcessorBean;
+import ejb.CustomerManagementEJB;
+import ejb.OrderProcessorEJB;
+import ejbimpl.CustomerManagementBean;
+import ejbimpl.OrderProcessorBean;
 import entity.Customer;
 import entity.Order;
 import entity.OrderDetail;
@@ -34,10 +36,10 @@ import javax.servlet.http.HttpSession;
 public class OrderProcessorServlet extends HttpServlet {
 
     @EJB
-    OrderProcessorBean orderProcessorBean;
+    OrderProcessorEJB orderProcessorBean;
 
     @EJB
-    CustomerManagementBean customerManagementBean;
+    CustomerManagementEJB customerManagementBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -80,6 +82,10 @@ public class OrderProcessorServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             order.setStaffId(user);
             orderProcessorBean.processOrder(order);
+            List<Order> orderHistory = orderProcessorBean.findAll("orderDate");
+            request.setAttribute("orderHistory", orderHistory);
+            RequestDispatcher rd = request.getRequestDispatcher("order_history.jsp");
+            rd.include(request, response);
 
         }
 

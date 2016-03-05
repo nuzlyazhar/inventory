@@ -5,7 +5,8 @@
  */
 package servlets;
 
-import ejb.UserManagementBean;
+import ejb.UserManagementEJB;
+import ejbimpl.UserManagementBean;
 import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,7 +29,7 @@ import utils.EmailUtils;
 public class AdminApprovalServlet extends HttpServlet {
 
     @EJB
-    UserManagementBean userManagementBean;
+    UserManagementEJB userManagementBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

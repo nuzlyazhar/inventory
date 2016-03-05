@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejb;
+package ejbimpl;
 
+import ejb.UserManagementEJB;
 import entity.User;
 import java.util.List;
 import javax.ejb.Asynchronous;
@@ -23,11 +24,12 @@ import utils.EmailUtils;
  * @author nuzly
  */
 @Stateless
-public class UserManagementBean {
+public class UserManagementBean implements UserManagementEJB {
 
     @PersistenceContext
     EntityManager em;
 
+    @Override
     public void createUser(User u) {
         System.out.println(u);
         em.merge(u);
@@ -35,6 +37,7 @@ public class UserManagementBean {
 
     }
 
+    @Override
     public User findByUsername(String userName) {
         Query query = em.createQuery("SELECT u FROM User u WHERE u.username = ?1 ");
         query.setParameter(1, userName);
@@ -47,6 +50,7 @@ public class UserManagementBean {
 
     }
 
+    @Override
     public boolean validateUser(User u, String password) {
         boolean valid = false;
         if (password != null && password.equals(u.getPassword())) {
@@ -58,6 +62,7 @@ public class UserManagementBean {
     }
 
     //Used by sys admin
+    @Override
     public List<User> usersPendingApproval() {
         Query query = em.createQuery("SELECT u FROM User u WHERE u.status <> ?1 OR u.status is null ");
         query.setParameter(1, Constants.APPROVED);
@@ -67,6 +72,7 @@ public class UserManagementBean {
 
     }
     
+    @Override
     public User approveUser(String id){
         User user = em.find(User.class, Integer.valueOf(id));
         user.setStatus(Constants.APPROVED);
@@ -77,6 +83,7 @@ public class UserManagementBean {
     
     }
     @Asynchronous
+    @Override
     public void sendUserEmail(User approvedUser){
     
     String emailText = Constants.HI+approvedUser.getFirstName()+Constants.APPROVAL_EMAIL_CONTENT;

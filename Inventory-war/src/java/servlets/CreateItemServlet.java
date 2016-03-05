@@ -5,9 +5,12 @@
  */
 package servlets;
 
-import ejb.CategoryManagementBean;
-import ejb.ItemManagementBean;
-import ejb.SupplierManagementBean;
+import ejb.CategoryManagementEJB;
+import ejb.ItemManagementEJB;
+import ejb.SupplierManagementEJB;
+import ejbimpl.CategoryManagementBean;
+import ejbimpl.ItemManagementBean;
+import ejbimpl.SupplierManagementBean;
 import entity.Category;
 import entity.Item;
 import entity.Supplier;
@@ -31,13 +34,13 @@ import javax.servlet.http.HttpServletResponse;
 public class CreateItemServlet extends HttpServlet {
 
     @EJB
-    SupplierManagementBean supplierManagementBean;
+    SupplierManagementEJB supplierManagementBean;
 
     @EJB
-    CategoryManagementBean categoryManagementBean;
+    CategoryManagementEJB categoryManagementBean;
     
     @EJB
-    ItemManagementBean itemManagementBean;
+    ItemManagementEJB itemManagementBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
