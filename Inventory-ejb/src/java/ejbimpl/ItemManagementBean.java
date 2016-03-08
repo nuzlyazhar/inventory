@@ -80,7 +80,7 @@ public class ItemManagementBean implements ItemManagementEJB {
     }
 
     @Override
-    public List<Item> searchItem(Map<String, String> queryParameters) {
+    public List<Item> searchItem(Map<String, Object> queryParameters) {
         
         CriteriaBuilder cb = em.getCriteriaBuilder();
         final List<Predicate> predicates = new ArrayList<Predicate>();
@@ -90,8 +90,8 @@ public class ItemManagementBean implements ItemManagementEJB {
         if (queryParameters != null && !queryParameters.isEmpty()) {
             // Predicate condition = null;//cb.equal(root.get("itemName"), "iame");
             for (String parameter : queryParameters.keySet()) {
-                String parmValue = queryParameters.get(parameter);
-                if (InventoryUtils.isNotEmpty(parmValue)) {
+                Object parmValue = queryParameters.get(parameter);
+                if (null != parmValue && !"".equals(parmValue)) {
                     predicates.add(cb.equal(root.get(parameter), parmValue));
                 }
             }

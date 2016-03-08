@@ -23,7 +23,7 @@ public interface ItemManagementEJB {
 
     Item getItemById(String id);
 
-    List<Item> searchItem(Map<String, String> queryParameters);
+    List<Item> searchItem(Map<String, Object> queryParameters);
 
     Item searchItemByName(String itemName);
 

@@ -14,13 +14,21 @@ import java.util.List;
  */
 
 public interface CategoryManagementEJB {
-
+    /**
+     * 
+     * @param cat
+     * @return created category
+     */
     Category createCategory(Category cat);
 
+    /**
+     * 
+     * @return All categories
+     */
     List<Category> findAll();
 
     Category findCategoryById(Integer id);
 
-    Category findCategoryByName(Integer catName);
+    Category findCategoryByName(String catName);
     
 }

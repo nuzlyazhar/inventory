@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- *
+ * 
  * @author nuzly
  */
 @Entity
@@ -82,6 +82,14 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
+    /**
+     * 
+     * @param id
+     * @param firstName
+     * @param lastName
+     * @param address
+     * @param phoneNo 
+     */
     public Customer(Integer id, String firstName, String lastName, String address, String phoneNo) {
         this.id = id;
         this.firstName = firstName;

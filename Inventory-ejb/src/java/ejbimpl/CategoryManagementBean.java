@@ -44,7 +44,7 @@ public class CategoryManagementBean implements CategoryManagementEJB {
     }
     
     @Override
-     public Category findCategoryByName(Integer catName){
+     public Category findCategoryByName(String catName){
      Category category= em.createNamedQuery("Category.findByCatName", Category.class).setParameter("catName", catName).getSingleResult();
      return category;
     }

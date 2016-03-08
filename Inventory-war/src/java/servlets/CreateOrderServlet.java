@@ -27,6 +27,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.InventoryUtils;
 
 /**
  *
@@ -69,15 +70,21 @@ public class CreateOrderServlet extends HttpServlet {
 
         System.out.println("submit button :" + orderItem);
         if (null == orderItem) {
-            Map<String, String> queryParameters = new HashMap<String, String>();
+            Map<String, Object> queryParameters = new HashMap<String, Object>();
             String itemName = request.getParameter("itemName");
             String catId = request.getParameter("categoryList");
             String supId = request.getParameter("suppliersList");
             System.out.println("servlets.CreateOrderServlet.doPost()");
+            if (InventoryUtils.isNotEmpty(catId)) {
+                Category cat = categoryManagementBean.findCategoryByName(catId);
+                queryParameters.put("catId", cat);
+            }
+            if (InventoryUtils.isNotEmpty(supId)) {
+                Supplier sup = supplierManagementBean.findSupplierByName(supId);
+                queryParameters.put("supId", sup);
+            }
 
             queryParameters.put("itemName", itemName);
-            queryParameters.put("catId", catId);
-
             List<Item> items = itemManagementBean.searchItem(queryParameters);
             List<Category> categories = categoryManagementBean.findAll();
             List<Supplier> suppliers = supplierManagementBean.findAllSuppliers();
