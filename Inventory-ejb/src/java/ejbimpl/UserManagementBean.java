@@ -87,7 +87,7 @@ public class UserManagementBean implements UserManagementEJB {
     public void sendUserEmail(User approvedUser){
     
     String emailText = Constants.HI+approvedUser.getFirstName()+Constants.APPROVAL_EMAIL_CONTENT;
-        EmailUtils.sendEmail(approvedUser.getEmail(), Constants.APPROVL_EMAIL_SUBJECT, emailText);
+        EmailUtils.sendEmail(approvedUser.getEmail(), Constants.APPROVL_EMAIL_SUBJECT, emailText,null);
     }
     
    

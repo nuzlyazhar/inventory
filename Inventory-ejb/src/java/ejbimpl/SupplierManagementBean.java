@@ -41,4 +41,9 @@ public class SupplierManagementBean implements SupplierManagementEJB {
     public Supplier findSupplierByName(String name){
        return em.createNamedQuery("Supplier.findByCompName", Supplier.class).setParameter("compName", name).getSingleResult();
     }
+    
+    @Override
+    public Supplier findSupplierById(int id){
+       return em.createNamedQuery("Supplier.findById", Supplier.class).setParameter("id", id).getSingleResult();
+    }
 }

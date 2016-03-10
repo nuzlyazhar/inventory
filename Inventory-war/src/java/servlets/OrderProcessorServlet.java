@@ -7,15 +7,11 @@ package servlets;
 
 import ejb.CustomerManagementEJB;
 import ejb.OrderProcessorEJB;
-import ejbimpl.CustomerManagementBean;
-import ejbimpl.OrderProcessorBean;
 import entity.Customer;
 import entity.Order;
 import entity.OrderDetail;
 import entity.User;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;

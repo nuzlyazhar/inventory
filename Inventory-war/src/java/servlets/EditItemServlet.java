@@ -5,13 +5,12 @@
  */
 package servlets;
 
-import ejb.CategoryManagementEJB;
 import ejb.ItemManagementEJB;
-import ejb.SupplierManagementEJB;
 import entity.Category;
 import entity.Item;
 import entity.Supplier;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.ejb.EJB;
@@ -26,65 +25,75 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author nuzly
  */
-@WebServlet(name = "CreateItemServlet", urlPatterns = {"/CreateItemServlet"})
-public class CreateItemServlet extends HttpServlet {
+@WebServlet(name = "EditItemServlet", urlPatterns = {"/EditItemServlet"})
+public class EditItemServlet extends HttpServlet {
 
-    @EJB
-    SupplierManagementEJB supplierManagementBean;
-
-    @EJB
-    CategoryManagementEJB categoryManagementBean;
-    
     @EJB
     ItemManagementEJB itemManagementBean;
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Supplier> suppliers = supplierManagementBean.findAllSuppliers();
-        List<Category> categories = categoryManagementBean.findAll();
+        String id = request.getParameter("editItem");
+        Item item = itemManagementBean.getItemById(id);
 
-        request.setAttribute("suppliersList", suppliers);
-        request.setAttribute("categoriesList", categories);
-
-        RequestDispatcher rd = request.getRequestDispatcher("create_item.jsp");
+        request.setAttribute("editItem", item);
+        RequestDispatcher rd = request.getRequestDispatcher("edit_item.jsp");
         rd.include(request, response);
 
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String id = request.getParameter("editItemId");
         String name = request.getParameter("iname");
         String desc = request.getParameter("idesc");
         String uprice = request.getParameter("uprice");
         String qperunit = request.getParameter("qperunit");
-        String size = request.getParameter("size");
-        String itemCat = request.getParameter("itemCat");
-        String itemSup = request.getParameter("itemSup");
-        String numunits = request.getParameter("numunits");
         String rothreshold = request.getParameter("rothreshold");
-        
-        Item item = new Item();
+
+        Item item = itemManagementBean.getItemById(id);
         item.setItemName(name);
         item.setItemDescription(desc);
         item.setUnitPrice(new BigDecimal(uprice));
         item.setQuanityPerUnit(Integer.parseInt(qperunit));
-        item.setItemSize(size);
-        item.setSupId(new Supplier(Integer.parseInt(itemSup)));
-        item.setCatId(new Category(Integer.parseInt(itemCat)));
-        item.setUnitsInStock(Integer.parseInt(numunits));
+
         item.setReorderThreshold(Integer.parseInt(rothreshold));
-        item.setUnitsInOrder(0);
-        
+
         itemManagementBean.createItem(item);
         List<Item> itemsList = itemManagementBean.findAllItems();
         request.setAttribute("itemsList", itemsList);
         RequestDispatcher rd = request.getRequestDispatcher("list_items.jsp");
         rd.include(request, response);
-
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

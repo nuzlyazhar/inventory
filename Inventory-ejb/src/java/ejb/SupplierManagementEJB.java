@@ -20,4 +20,5 @@ public interface SupplierManagementEJB {
 
     Supplier findSupplierByName(String name);
     
+    public Supplier findSupplierById(int id);
 }

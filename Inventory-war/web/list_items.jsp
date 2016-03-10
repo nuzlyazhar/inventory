@@ -59,7 +59,7 @@
                             <div class="col-md-12">
                                 <div class="content-panel">
                                     <ul class="sub">
-                               <li><a href="${pageContext.request.contextPath}/CreateItemServlet">Create Item</a></li>
+                               <li><a href="${pageContext.request.contextPath}/EditItemServlet">Create Item</a></li>
                                 
                             </ul>
                                     <table class="table table-striped table-advance table-hover">
@@ -77,7 +77,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <form action="EditCategoryServlet" method="get" > 
+                                        <form action="EditItemServlet" method="get" > 
                                             <input type="hidden" value="EDIT" name="fromList">
                                             <c:forEach var="pitem" items="${itemsList}">
                                                 <tr>

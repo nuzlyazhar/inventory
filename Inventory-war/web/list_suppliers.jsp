@@ -77,7 +77,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <form action="EditCategoryServlet" method="get" > 
+                                        <form action="UpdateSupplierServlet" method="get" > 
                                             <input type="hidden" value="EDIT" name="fromList">
                                             <c:forEach var="supplier" items="${supplierList}">
                                                 <tr>
@@ -89,7 +89,7 @@
 
                                                     <td>
                                                         
-                                                        <button name="editCategory"  class="btn btn-primary btn-xs" value="${supplier.id}"><i class="fa fa-pencil" ></i></button>
+                                                        <button name="editSupplier"  class="btn btn-primary btn-xs" value="${supplier.id}"><i class="fa fa-pencil" ></i></button>
                                                        
                                                    </td>
                                                 </tr>

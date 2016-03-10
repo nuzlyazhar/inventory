@@ -4,7 +4,8 @@
     Author     : nuzly
 --%>
 
- <aside>
+ <%@page import="entity.User"%>
+<aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
@@ -20,7 +21,9 @@
                           <span>Admin Function</span>
                       </a>
                       <ul class="sub">
-                          <li> <a href="${pageContext.request.contextPath}/admin">Approval RequestsTT</a></li>
+                          <c:if test="<%= ((User)session.getAttribute("user")).getRole().equals("ADMIN") %>">
+                          <li> <a href="${pageContext.request.contextPath}/admin">Approval Requests</a></li>
+                          </c:if>
                            
                           <li><a href="${pageContext.request.contextPath}/AddCategoryServlet">Categories</a></li>
                           

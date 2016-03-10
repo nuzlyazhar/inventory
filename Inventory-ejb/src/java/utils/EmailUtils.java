@@ -22,27 +22,40 @@ import javax.mail.internet.MimeMessage;
  */
 public class EmailUtils {
 
-    public static void sendEmail(String email, String subject, String body) {
+    public static String HTML = "html";
 
-        String from = "nuzly86@gmail.com";
+    /**
+     *
+     * @param email to email
+     * @param subject subject of email
+     * @param body body of email
+     * @param type html or plain tect
+     */
+    public static void sendEmail(String email, String subject, String body, String type) {
+
+        String from = "inventorycontrolsystemntu@gmail.com";
         Properties properties = System.getProperties();
         properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.smtp.host", "smtp.gmail.com");
-		properties.put("mail.smtp.port", "587");//inventorycontrolsystemntu@gmail.com
-        		Session session = Session.getInstance(properties,
-		  new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("inventorycontrolsystemntu@gmail.com", "i123i123");
-			}
-		  });
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        Session session = Session.getInstance(properties,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, "i123i123");
+            }
+        });
 
         MimeMessage message = new MimeMessage(session);
         try {
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             message.setSubject(subject);
-            message.setText(body);
+            if (!HTML.equals(type)) {
+                message.setText(body);
+            } else {
+                message.setContent(body, "text/html; charset=utf-8");
+            }
             Transport.send(message);
         } catch (MessagingException ex) {
             Logger.getLogger(EmailUtils.class.getName()).log(Level.SEVERE, null, ex);
