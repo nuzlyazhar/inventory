@@ -82,7 +82,7 @@
                                             <input type="hidden" value="EDIT" name="fromList">
                                             <c:forEach var="cust" items="${customerList}">
                                                 <tr>
-                                                    <td><a href="basic_table.html#"><c:out value="${cust.firstName}" /></a></td>
+                                                     <td class="hidden-phone"><c:out value="${cust.firstName}" /></td>
                                                     <td class="hidden-phone"><c:out value="${cust.lastName}" /></td>
                                                      <td class="hidden-phone"><c:out value="${cust.address}" /></td>
                                                       <td class="hidden-phone"><c:out value="${cust.phoneNo}" /></td>

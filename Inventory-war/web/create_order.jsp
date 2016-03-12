@@ -122,7 +122,7 @@
                                                 <input type="hidden" value="EDIT" name="fromList">
                                                 <c:forEach var="pitem" items="${items}">
                                                     <tr>
-                                                        <td><a href="basic_table.html#"><c:out value="${pitem.itemName}" /></a></td>
+                                                        <td class="numeric"><c:out value="${pitem.itemName}" /></td>
                                                         <td class="numeric"><c:out value="${pitem.unitPrice}" /></td>
                                                         <td class="numeric"><c:out value="${pitem.quanityPerUnit}" /></td>
                                                          <td class="numeric"><c:out value="${pitem.unitsInStock}" /></td>

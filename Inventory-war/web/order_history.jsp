@@ -95,7 +95,7 @@
                                                                         <h4 class="modal-title">${order.id} Odrer Detail</h4>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <p>Some text in the modal.</p>
+                                                                       
 
                                                                         <table class="table table-striped table-advance table-hover">
 

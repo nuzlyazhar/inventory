@@ -65,6 +65,7 @@ public class CreateCustomerServlet extends HttpServlet {
         customerManagementBean.createItem(cust);
         List<Customer> customerList = customerManagementBean.findAll();
         request.setAttribute("customerList", customerList);
+        session.setAttribute("customers", customerList);
         RequestDispatcher rd = request.getRequestDispatcher("list_customers.jsp");
         rd.include(request, response);
 

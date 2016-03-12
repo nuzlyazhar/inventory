@@ -71,6 +71,8 @@
                                                 <th><i class="fa fa-bookmark"></i>id</th>
                                                 <th><i class="fa fa-bookmark"></i>Company Name</th>
                                                 <th><i class="fa fa-bookmark"></i> Supplier Name</th>
+                                                 <th><i class="fa fa-bookmark"></i> Supplier Address</th>
+                                                 <th><i class="fa fa-bullhorn"></i> Supplier Phone</th>
                                                  <th><i class="fa fa-bullhorn"></i> Supplier Email</th>
 
                                                 <th></th>
@@ -82,8 +84,10 @@
                                             <c:forEach var="supplier" items="${supplierList}">
                                                 <tr>
                                                     <td class="hidden-phone"><c:out value="${supplier.id}" /></td>
-                                                    <td><a href="basic_table.html#"><c:out value="${supplier.compName}" /></a></td>
+                                                    <td><c:out value="${supplier.compName}" /></td>
                                                     <td class="hidden-phone"><c:out value="${supplier.contactFname}" /></td>
+                                                    <td class="hidden-phone"><c:out value="${supplier.compAddress}" /></td>
+                                                     <td class="hidden-phone"><c:out value="${supplier.compPhone}" /></td>
                                                       <td class="hidden-phone"><c:out value="${supplier.compEmail}" /></td>
                                                    
 

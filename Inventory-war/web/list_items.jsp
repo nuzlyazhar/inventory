@@ -59,7 +59,7 @@
                             <div class="col-md-12">
                                 <div class="content-panel">
                                     <ul class="sub">
-                               <li><a href="${pageContext.request.contextPath}/EditItemServlet">Create Item</a></li>
+                               <li><a href="${pageContext.request.contextPath}/CreateItemServlet">Create Item</a></li>
                                 
                             </ul>
                                     <table class="table table-striped table-advance table-hover">
@@ -81,7 +81,7 @@
                                             <input type="hidden" value="EDIT" name="fromList">
                                             <c:forEach var="pitem" items="${itemsList}">
                                                 <tr>
-                                                    <td><a href="basic_table.html#"><c:out value="${pitem.itemName}" /></a></td>
+                                                    <td class="hidden-phone"><c:out value="${pitem.itemName}" /></td>
                                                     <td class="hidden-phone"><c:out value="${pitem.itemDescription}" /></td>
                                                     <td class="hidden-phone"><c:out value="${pitem.unitPrice}" /></td>
                                                     <td class="hidden-phone"><c:out value="${pitem.quanityPerUnit}" /></td>
