@@ -20,6 +20,8 @@ public interface UserManagementEJB {
     void createUser(User u);
 
     User findByUsername(String userName);
+    
+    List<User> findALl();
 
     @Asynchronous
     void sendUserEmail(User approvedUser);

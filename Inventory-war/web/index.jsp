@@ -60,7 +60,7 @@
       				
       			
       			
-      			<div class="col-lg-6 col-md-6 col-sm-12">
+      			<div class="col-lg-6 col-md-6 col-sm-12" width='100%'>
       				
       				<div class="showback">
       					<h4><i class="fa fa-angle-right"></i> Inventory Alerts</h4>

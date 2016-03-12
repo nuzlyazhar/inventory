@@ -54,7 +54,7 @@
                           <span>Customers</span>
                       </a>
                       <ul class="sub">
-                          
+                          <li><a href="${pageContext.request.contextPath}/CreateCustomerServlet">View Customers</a></li>
                            <li><a href="create_customer.jsp">Create Customers</a></li>
                          
                       </ul>

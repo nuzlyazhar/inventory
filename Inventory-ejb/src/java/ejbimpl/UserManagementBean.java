@@ -71,6 +71,13 @@ public class UserManagementBean implements UserManagementEJB {
         return usersPendingApproval;
 
     }
+   
+    @Override
+    public List<User> findALl() {
+        List<User> allUsers = em.createNamedQuery("User.findAll", User.class).getResultList();
+        return allUsers;
+
+    }
     
     @Override
     public User approveUser(String id){

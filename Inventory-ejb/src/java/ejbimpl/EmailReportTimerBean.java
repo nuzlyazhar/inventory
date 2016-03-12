@@ -7,7 +7,9 @@ package ejbimpl;
 
 import ejb.EmailReportTimerBeanLocal;
 import ejb.OrderProcessorEJB;
+import ejb.UserManagementEJB;
 import entity.Order;
+import entity.User;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,8 +28,11 @@ public class EmailReportTimerBean implements EmailReportTimerBeanLocal {
 
     @EJB
     OrderProcessorEJB orderProcessorBean;
+    
+    @EJB
+    UserManagementEJB userManagementBean;
 
-    @Schedule(hour = "*", minute = "*")
+    @Schedule(month = "*")
     @Override
     public void myTimer() {
         excute();
@@ -64,10 +69,11 @@ public class EmailReportTimerBean implements EmailReportTimerBeanLocal {
         String month = new SimpleDateFormat("MMMM").format(cal.getTime());
         int year = cal.get(Calendar.YEAR);
         String subject = "Order Summary Report for " + month+" "+year;
-        //EmailUtils.sendEmail("hub.dani@gmail.com", subject, result.toString(), EmailUtils.HTML);
-        //EmailUtils.sendEmail("snipergacp@gmail.com", subject, result.toString(), EmailUtils.HTML);
-       // EmailUtils.sendEmail("mariyam.amna@gmail.com", subject, result.toString(), EmailUtils.HTML);
-//       EmailUtils.sendEmail("nuskyazhar@gmail.com", subject, result.toString(), EmailUtils.HTML);
+        List<User> users =  userManagementBean.findALl();
+        for(User u : users){
+        EmailUtils.sendEmail(u.getEmail(), subject, result.toString(), EmailUtils.HTML);
+        }
+       
 
     }
 }

@@ -33,6 +33,11 @@ public class CreateCustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+          
+        List<Customer> customerList = customerManagementBean.findAll();
+        request.setAttribute("customerList", customerList);
+        RequestDispatcher rd = request.getRequestDispatcher("list_customers.jsp");
+        rd.include(request, response);
 
     }
 
