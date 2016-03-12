@@ -71,7 +71,7 @@
 
                                             <datalist  name="itemslist" id="items">
                                                 <c:forEach items="${items}" var="isup" >
-                                                    <option value="${isup.itemName}">${isup.id}</option>
+                                                    <option value="${isup.itemName}">${isup.itemName}</option>
 
                                                 </c:forEach>
                                             </datalist>
@@ -82,7 +82,7 @@
 
                                             <datalist  name="suppliersList" id="categoryList">
                                                 <c:forEach items="${categories}" var="cat" >
-                                                    <option value="${cat.catName}">${cat.id}</option>
+                                                    <option value="${cat.catName}">${cat.catName}</option>
 
                                                 </c:forEach>
                                             </datalist>
@@ -93,7 +93,7 @@
 
                                             <datalist  name="suppliersList" id="suppliersList">
                                                 <c:forEach items="${suppliers}" var="sup" >
-                                                    <option value="${sup.compName}">${sup.id}</option>
+                                                    <option value="${sup.compName}">${sup.compName}</option>
 
                                                 </c:forEach>
                                             </datalist>

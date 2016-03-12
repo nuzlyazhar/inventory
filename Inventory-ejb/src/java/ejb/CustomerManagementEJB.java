@@ -9,15 +9,29 @@ import entity.Customer;
 import java.util.List;
 
 /**
- *
+ * EJB for customer management.
  * @author nuzly
  */
 public interface CustomerManagementEJB {
-
+    
+    /**
+     * creates a customer
+     * @param c
+     * @return 
+     */
     Customer createItem(Customer c);
-
+    
+    /**
+     * Find all customers
+     * @return 
+     */
     List<Customer> findAll();
 
+    /**
+     * Find customer by id
+     * @param id
+     * @return  
+     */
     Customer findById(String id);
     
 }

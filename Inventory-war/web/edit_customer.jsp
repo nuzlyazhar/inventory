@@ -3,7 +3,7 @@
     Created on : Feb 10, 2016, 10:42:38 PM
     Author     : nuzly
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,43 +40,64 @@
             <!-- **********************************************************************************************************************************************************
             TOP BAR CONTENT & NOTIFICATIONS
             *********************************************************************************************************************************************************** -->
-            ß<jsp:include page="header.jsp" />
+            <!--header start-->
+           <jsp:include page="header.jsp" />
    
-            <jsp:include page="side_bar.jsp" />
+           <jsp:include page="side_bar.jsp" />
+            <!-- **********************************************************************************************************************************************************
+            MAIN CONTENT
+            *********************************************************************************************************************************************************** -->
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i> Add Stock</h3>
+                    <h3><i class="fa fa-angle-right"></i> Edit Customer</h3>
 
                     <!-- BASIC FORM ELELEMNTS -->
                     <div class="row mt">
                         <div class="col-lg-12">
                             <div class="form-panel">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i> Add Stock</h4>
-                                <form class="form-horizontal style-form" method="post" action="AddStockServlet">
-                                  
-                                
-                                    
-                                        <div class="form-group">
-                                        <label class="col-sm-2 col-sm-2 control-label">Item Name</label>
+                                <h4 class="mb"><i class="fa fa-angle-right"></i> Edit Customer</h4>
+                                <form class="form-horizontal style-form" method="post" action="EditCustomerServlet">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">First Name</label>
                                         <div class="col-sm-10">
-                                           <input type="text" list="items" name="items" autocomplete="off" />
-                                           <datalist  name="itemslist" id="items">
-                                                <c:forEach items="${stockItemList}" var="isup" >
-                                                    <option value="${isup.itemName}">${isup.itemName}</option>
-                                                    
-                                                </c:forEach>
-                                            </datalist>
+                                            <input type="text" class="form-control" name="cufname" value="${editCustomer.firstName}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Last Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="culname" value="${editCustomer.lastName}">
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-theme" >Search</button>
+                                     <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Address</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="cuadd" value="${editCustomer.address}"></input>
+                                        </div>
+                                    </div>  
+                                      <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Phone Number</label>
+                                        <div class="col-sm-10">
+                                            <input type="tel" class="form-control" name="cuphone" value="${editCustomer.phoneNo}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" name="cuemail" value="${editCustomer.email}">
+                                        </div>
+                                    </div>  
+                                    
+                              
+                                            <button type="submit" id="cutomerToEdit" name="cutomerToEdit" value="${editCustomer.id}" class="btn btn-theme" >Update</button>
+                                        
                                 </form>
                             </div>
                         </div><!-- col-lg-12-->      	
                     </div><!-- /row -->
-                    
-                   
 
 
 
@@ -86,7 +107,7 @@
 
             <!--main content end-->
             <!--footer start-->
-            <jsp:include page="footer.jsp" />
+           <jsp:include page="footer.jsp" />
    
      
             <!--footer end-->

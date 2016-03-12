@@ -8,13 +8,18 @@ package ejb;
 import javax.ejb.Local;
 
 /**
- *
+ * EJB for Email report sending. Uses EJB 3.1 @Schedule
  * @author nuzly
  */
 @Local
 public interface EmailReportTimerBeanLocal {
-    
+    /**
+     * The timer method to execute reports
+     */
     public void myTimer();
 
+    /**
+     * Execute method which does the task
+     */
     void excute();
 }

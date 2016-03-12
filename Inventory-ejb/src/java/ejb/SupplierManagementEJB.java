@@ -9,16 +9,35 @@ import entity.Supplier;
 import java.util.List;
 
 /**
- *
+ * EJB for Supplier management,
  * @author nuzly
  */
 public interface SupplierManagementEJB {
 
+    /**
+     * create Supplier
+     * @param sup
+     * @return
+     */
     Supplier createSupplier(Supplier sup);
-
-    List<Supplier> findAllSuppliers();
-
-    Supplier findSupplierByName(String name);
     
+    /**
+     * find All Suppliers
+     * @return 
+     */
+    List<Supplier> findAllSuppliers();
+    
+    /**
+     * find Supplier By Name
+     * @param name
+     * @return 
+     */
+    Supplier findSupplierByName(String name);
+
+    /**
+     * find Supplier By Id
+     * @param id
+     * @return 
+     */
     public Supplier findSupplierById(int id);
 }

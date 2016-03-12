@@ -65,7 +65,7 @@
 
                                             <datalist  name="customerList" id="customerList" >
                                                 <c:forEach items="${sessionScope.customers}" var="cus" >
-                                                    <option value="${cus.id} - ${cus.firstName}">${cus.id}</option>
+                                                    <option value="${cus.id} - ${cus.firstName}">${cus.id} - ${cus.firstName}</option>
 
                                                 </c:forEach>
                                             </datalist>

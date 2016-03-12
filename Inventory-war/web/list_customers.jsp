@@ -49,7 +49,7 @@
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
-                    <h3><i class="fa fa-angle-right"></i> Categories</h3>
+                    <h3><i class="fa fa-angle-right"></i> Customers</h3>
                     <div class="row">
 
                              
@@ -78,7 +78,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <form action="EditCategoryServlet" method="get" > 
+                                        <form action="EditCustomerServlet" method="get" > 
                                             <input type="hidden" value="EDIT" name="fromList">
                                             <c:forEach var="cust" items="${customerList}">
                                                 <tr>

@@ -9,13 +9,13 @@ import entity.Category;
 import java.util.List;
 
 /**
- *
+ * EJB for Category management.
  * @author nuzly
  */
 
 public interface CategoryManagementEJB {
     /**
-     * 
+     * Creates a Category
      * @param cat
      * @return created category
      */
@@ -26,9 +26,19 @@ public interface CategoryManagementEJB {
      * @return All categories
      */
     List<Category> findAll();
-
+    
+    /**
+     * find Category By Id
+     * @param id
+     * @return 
+     */
     Category findCategoryById(Integer id);
 
+    /**
+     * Finds category by its name.
+     * @param catName
+     * @return 
+     */
     Category findCategoryByName(String catName);
     
 }

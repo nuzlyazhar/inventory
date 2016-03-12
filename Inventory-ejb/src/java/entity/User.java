@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- *
+ * Represents a User in the system.
  * @author nuzly
  */
 @Entity

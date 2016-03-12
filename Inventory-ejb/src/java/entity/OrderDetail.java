@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 /**
- *
+ * Represents an Order Detail entry.
  * @author nuzly
  */
 @Entity

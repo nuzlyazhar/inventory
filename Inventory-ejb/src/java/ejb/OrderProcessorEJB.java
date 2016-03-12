@@ -9,15 +9,29 @@ import entity.Order;
 import java.util.List;
 
 /**
- *
+ * EJB for Order management.
  * @author nuzly
  */
 public interface OrderProcessorEJB {
 
+    /**
+     * create Order
+     * @param order
+     * @return 
+     */
     Order createOrder(Order order);
 
+    /**
+     * find All orders
+     * @param orderBy
+     * @return 
+     */
     List<Order> findAll(String orderBy);
 
+    /**
+     * Process the order and persist.
+     * @param order 
+     */
     void processOrder(Order order);
     
 }

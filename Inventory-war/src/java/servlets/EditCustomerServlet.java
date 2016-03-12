@@ -6,10 +6,9 @@
 package servlets;
 
 import ejb.CustomerManagementEJB;
-import ejbimpl.CustomerManagementBean;
 import entity.Customer;
-import entity.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -24,44 +23,62 @@ import javax.servlet.http.HttpSession;
  *
  * @author nuzly
  */
-@WebServlet(name = "CreateCustomerServlet", urlPatterns = {"/CreateCustomerServlet"})
-public class CreateCustomerServlet extends HttpServlet {
+@WebServlet(name = "EditCustomerServlet", urlPatterns = {"/EditCustomerServlet"})
+public class EditCustomerServlet extends HttpServlet {
 
     @EJB
     CustomerManagementEJB customerManagementBean;
 
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          
-        List<Customer> customerList = customerManagementBean.findAll();
-        request.setAttribute("customerList", customerList);
-        RequestDispatcher rd = request.getRequestDispatcher("list_customers.jsp");
+        String id = request.getParameter("editCust");
+        Customer cu = customerManagementBean.findById(id);
+         request.setAttribute("editCustomer", cu);
+       
+        RequestDispatcher rd = request.getRequestDispatcher("edit_customer.jsp");
         rd.include(request, response);
-
+        
+       
+       
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+         HttpSession session = request.getSession();
+        String id = request.getParameter("cutomerToEdit");
+        Customer cust = customerManagementBean.findById(id);
         String fName = request.getParameter("cufname");
         String lname = request.getParameter("culname");
         String address = request.getParameter("cuadd");
         String phone = request.getParameter("cuphone");
         String email = request.getParameter("cuemail");
-
-        Customer cust = new Customer();
+        
         cust.setFirstName(fName);
         cust.setLastName(lname);
         cust.setAddress(address);
         cust.setPhoneNo(phone);
         cust.setEmail(email);
-        if (null != session) {
-            User u = (User) session.getAttribute("user");
-            cust.setStaffId(u);
-        }
-
+        
         customerManagementBean.createItem(cust);
         List<Customer> customerList = customerManagementBean.findAll();
         request.setAttribute("customerList", customerList);
@@ -70,7 +87,7 @@ public class CreateCustomerServlet extends HttpServlet {
         }
         RequestDispatcher rd = request.getRequestDispatcher("list_customers.jsp");
         rd.include(request, response);
-
+       
     }
 
     /**

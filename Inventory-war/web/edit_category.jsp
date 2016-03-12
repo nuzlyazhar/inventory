@@ -50,7 +50,7 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Add Category</h3>
+          	<h3><i class="fa fa-angle-right"></i> Edit Category</h3>
           	
           	<!-- BASIC FORM ELELEMNTS -->
           	<div class="row mt">

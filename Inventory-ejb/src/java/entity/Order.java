@@ -29,7 +29,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 /**
- *
+ * Represents an Order
  * @author nuzly
  */
 @Entity
